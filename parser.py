@@ -40,7 +40,11 @@ def main():
         new_item_qty = 0
         for link in parsed:
             if not date_changed or date_changed < link["date"]:
-                link["org"] = org
+
+                link["org"] = {}
+                for value in org:
+                    link["_org_" + value] = org[value]
+
                 result.append(link)
                 new_item_qty += 1
 
