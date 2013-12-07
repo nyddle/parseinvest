@@ -1,0 +1,4 @@
+argparse==1.2.1
+pickleDB==0.3
+requests==2.1.0
+wsgiref==0.1.2
