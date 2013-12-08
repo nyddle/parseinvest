@@ -32,7 +32,7 @@ def main():
         logging.debug("Server responded:\n%s", r.content)
         config.orgs = r.json()
         f = open(config.sources_file, "w")
-        logging.debug("Saving new list of sources to file '%s'", r.content)
+        logging.debug("Saving new list of sources to file '%s'", config.sources_file)
         f.write(json.dumps(config.orgs))
 
     else:
