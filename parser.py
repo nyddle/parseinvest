@@ -18,19 +18,14 @@ def main():
 
     # Update config file
     logging.info("Checking source updates at %s",
-                 config.rest_api + "?action=check_source_update")
+                 config.rest_api + "?action=check_sources_update")
 
-    r = requests.get(config.rest_api + "?action=check_source_update")
+    r = requests.get(config.rest_api + "?action=check_sources_update")
     logging.debug("Server responded:\n%s", r.content)
     source_state = r.json()
 
     if source_state["changes"]:
-        logging.info("Checking source updates at %s",
-                     config.rest_api + "?action=check_source_update")
-
-        r = requests.get(config.rest_api + "?action=get_source_update")
-        logging.debug("Server responded:\n%s", r.content)
-        config.orgs = r.json()
+        config.orgs = source_state["sources"]
         f = open(config.sources_file, "w")
         logging.debug("Saving new list of sources to file '%s'", config.sources_file)
         f.write(json.dumps(config.orgs))
