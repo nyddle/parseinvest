@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
+import json
+
 rest_api = "http://pereborstudio.com/investeka.php"
-orgs = [
-    { "name": "Альфа капитал", "link": "http://www.alfacapital.ru/rss/news/", "feedtype": "rss" },
-    { "name": "ItInvest", "link": "http://www.itinvest.ru/rss/news/", "feedtype": "rss" },
-]
+sources_file = "sources.json"
+orgs = json.loads(open(sources_file, "r").read())
